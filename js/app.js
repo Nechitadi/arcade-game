@@ -21,7 +21,11 @@ Enemy.prototype.update = function(dt) {
     // You should multiply any movement by the dt parameter
     // which will ensure the game runs at the same speed for
     // all computers.
-    
+    if(this.x < 505) {
+        this.x += 150*dt; 
+    } else {
+        this.x = -90;
+    }
 };
 
 // Draw the enemy on the screen, required method for game
@@ -29,24 +33,54 @@ Enemy.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
 
-Player.prototype.render = function() {
-    ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
-};
 // Now write your own player class
 var Player = function(x, y) {
     this.sprite = 'images/char-boy.png';
     this.x = 200;
-    this.y = 300;
+    this.y = 320;
+}
+
+// Update() method for player
+Player.prototype.update = function() {
+
+}
+
+// Render() method for player
+Player.prototype.render = function() {
+    ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
+};
+
+// Reset() method for player
+Player.prototype.reset = function() {
+    this.x = 200;
+    this.y = 320;
 }
 
 // This class requires an update(), render() and
 // a handleInput() method.
-
+Player.prototype.handleInput = function(direction) {
+    if(direction === 'left' && thix.x > 0) {
+        this.x += -50;
+    }
+    if(direction === 'right' && this.x < 505) {
+        this.x += 50;
+    }
+    if(direction === 'up' && this.y >= 3) {
+        this.y += -50;
+    }
+    if(direction === 'down' && this.y < 606) {
+        this.y += 50;
+    }
+}
 
 // Now instantiate your objects.
+var enemy1 = new Enemy(-90, 60);
+var enemy2 = new Enemy(-190, 140);
+var enemy3 = new Enemy(-290, 230);
 // Place all enemy objects in an array called allEnemies
+let allEnemies = [enemy1, enemy2, enemy3];
 // Place the player object in a variable called player
-
+var player = new Player();
 
 
 // This listens for key presses and sends the keys to your
