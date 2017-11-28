@@ -22,9 +22,9 @@ Enemy.prototype.update = function(dt) {
     // which will ensure the game runs at the same speed for
     // all computers.
     if(this.x < 505) {
-        this.x += 150*dt; 
+        this.x += (Math.random() * 600) *dt; 
     } else {
-        this.x = -90;
+        this.x = Math.random() * 50 - 90;
     }
 
     // When the player collides with the enemy, the score and player position will be reset
@@ -89,7 +89,7 @@ Player.prototype.handleInput = function(direction) {
 // Now instantiate your objects.
 var enemy1 = new Enemy(-90, 60);
 var enemy2 = new Enemy(-190, 140);
-var enemy3 = new Enemy(-290, 230);
+var enemy3 = new Enemy(0, 230);
 // Place all enemy objects in an array called allEnemies
 let allEnemies = [enemy1, enemy2, enemy3];
 // Place the player object in a variable called player
