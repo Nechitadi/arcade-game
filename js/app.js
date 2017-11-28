@@ -42,7 +42,13 @@ var Player = function(x, y) {
 
 // Update() method for player
 Player.prototype.update = function() {
-
+    // When the player reaches the water, the score is increased and the player's position is reset
+    if(this.y < 20) {
+        score++;
+        document.getElementById('playerScore').innerHTML = score;
+        this.reset();
+        console.log(score);
+    }
 }
 
 // Render() method for player
