@@ -26,6 +26,13 @@ Enemy.prototype.update = function(dt) {
     } else {
         this.x = -90;
     }
+
+    // When the player collides with the enemy, the score and player position will be reset
+    if (this.x < player.x + 30 && this.x + 60 > player.x && this.y < player.y + 60 && this.y + 40 > player.y) {
+        score = 0;
+        document.getElementById('playerScore').innerHTML = score;
+        player.reset();
+    }
 };
 
 // Draw the enemy on the screen, required method for game
