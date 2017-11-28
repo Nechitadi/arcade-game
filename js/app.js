@@ -59,16 +59,16 @@ Player.prototype.reset = function() {
 // This class requires an update(), render() and
 // a handleInput() method.
 Player.prototype.handleInput = function(direction) {
-    if(direction === 'left' && thix.x > 0) {
+    if(direction === 'left' && this.x > 0) {
         this.x += -50;
     }
     if(direction === 'right' && this.x < 505) {
         this.x += 50;
     }
-    if(direction === 'up' && this.y >= 3) {
+    if(direction === 'up' && this.y >= 20) {
         this.y += -50;
     }
-    if(direction === 'down' && this.y < 606) {
+    if(direction === 'down' && this.y < 400) {
         this.y += 50;
     }
 }
